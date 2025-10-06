@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Chelsea — Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#d94a5f;--muted:#6d5a60;--paper:#fff7f2}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Poppins,system-ui;background:var(--paper)}
+.center{height:100vh;display:flex;align-items:center;justify-content:center}
+.card{width:92%;max-width:520px;background:white;border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(30,10,30,0.06);text-align:center}
+.title{font-family:'Dancing Script',cursive;color:var(--accent);font-size:26px}
+.icons{display:flex;gap:18px;justify-content:center;margin-top:18px}
+.icon{width:140px;height:140px;border-radius:16px;border:2px solid rgba(217,74,95,0.08);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff)}
+.icon .emoji{font-size:34px}
+.icon p{margin:0;color:var(--muted);font-weight:600}
+.small{font-size:13px;color:var(--muted);margin-top:12px}
+.portrait{width:80px;height:80px;border-radius:12px;overflow:hidden;margin:0 auto}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.music{position:fixed;right:14px;bottom:14px;background:white;padding:8px;border-radius:999px;box-shadow:0 10px 30px rgba(10,10,10,0.12)}
+</style>
+</head><body>
+<div class="center">
+<div class="card">
+<div class="portrait"><img src="images/portrait.jpg" alt="portrait"></div>
+<div class="title">These are for you</div>
+<div class="small">Tap an icon to open</div>
+<div class="icons">
+<div class="icon" id="memBtn"><div class="emoji">📸</div><p>Our Memories</p></div>
+<div class="icon" id="letBtn"><div class="emoji">💌</div><p>My Letter</p></div>
+</div>
+<div style="margin-top:14px;color:var(--muted);font-size:13px">(Swipe sideways through memories — tap the letter to open the full page)</div>
+</div>
+</div>
+
+
+<div class="music">
+<audio id="bg" loop preload="auto">
+<source src="music/most-beautiful-thing.mp3" type="audio/mpeg">
+</audio>
+<button id="play">Play</button>
+</div>
+
+
+<script>
+const memBtn = document.getElementById('memBtn'); const letBtn = document.getElementById('letBtn');
+memBtn.addEventListener('click', ()=> location.href='memories.html');
+letBtn.addEventListener('click', ()=> location.href='letter.html');
+// music play toggle
+const bg = document.getElementById('bg'), play = document.getElementById('play');
+play.addEventListener('click', ()=>{
+if(bg.paused) bg.play().then(()=> play.textContent='Pause').catch(()=>{}); else bg.pause(), play.textContent='Play';
+});
+</script>
+</body></html>
